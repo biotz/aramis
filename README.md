@@ -138,6 +138,11 @@ Aramis equips you with couple of subscriptions you could use to track progress o
 => :pending
 ```
 
+## Known issues and limitations
+
+- Dispatching one event in two `::one-of` wrappers **will** disptach the event two times.
+- It's assumed that status of one event as a collaborator is the same in every group it collaborates to.
+
 ## License
 
 Copyright © 2018 Magnet Coop
