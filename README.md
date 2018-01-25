@@ -16,7 +16,7 @@ Imagine you want to dispatch event `::foo` but only once both
 
 #### Add dependency
 
-`[aramis.core "0.1.0"]`
+`[aramis.core "0.1.1"]`
 
 #### Dispatching a group
 

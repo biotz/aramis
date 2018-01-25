@@ -99,6 +99,17 @@
     (assoc-in db [:aramis group-id :once-done] once-done)))
 
 (rf/reg-event-fx
+  ;; usage: (dispatch [::once-all-done-explosive :g-1-id [::foo/say-hello "World"]])
+  ::once-all-done-explosive
+  (fn [{:keys [db]} [_ group-id once-done]]
+
+    ;; Stores an information about an event to be ran once all collaborators to group are done.
+    ;; If no collaborators exist so at the time of handling, `once-done` gets automatically dispatched.
+    (if (empty? (get-in db [:aramis group-id :pending]))
+      {:dispatch once-done}
+      {:dispatch [::once-all-done group-id once-done]})))
+
+(rf/reg-event-fx
   ;; usage: (dispatch [::wait-for-all-to
   ;;                   [[::foo/fetch {:event-id :buying-tomatoes}]
   ;;                    [::foo/fetch {:event-id :buying-cabbage}]]
@@ -116,7 +127,7 @@
                        [::one-of group-id dispatch]) dispatches)
                    [::once-all-done group-id once-all-done])}))
 
-;; CLOSURE - collaborators reporting and groups completion
+;;; CLOSURE - collaborators reporting and groups completion
 
 (rf/reg-event-db
   ::complete-collaborator
@@ -152,5 +163,7 @@
   ;; Once all collaborators to a group are marked `:done`, then that group is removed from `:aramis` register.
   ::complete
   (fn [{:keys [db]} [_ group-id]]
-    {:dispatch (get-in db [:aramis group-id :once-done])
-     :db (update db :aramis dissoc group-id)}))
+    (let [once-done (get-in db [:aramis group-id :once-done])]
+      (cond->
+        {:db (update db :aramis dissoc group-id)}
+        once-done (assoc :dispatch once-done)))))
