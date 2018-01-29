@@ -1,7 +1,7 @@
 > One for all, all for one  <br>
 > -- Alexandre Dumas, The Three Musketeers
 
-# Aramis
+# aramis
 
 This library provides a 
 [`Promise.all()`-like](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
@@ -9,10 +9,16 @@ capabilities for [re-frame](https://clojars.org/re-frame).
 
 ![Demo gif  1](/resources/demo/demo1.gif)
 
-## Usage
+## What's in it for me?
 
-Imagine you want to dispatch event `::foo` but only once both 
-`::bar` and `::baz` are successfully finished.
+Let us elaborate on what's happening on the gif attached above. When button "prepare party!" is clicked, 
+4 independent events are dispatched asynchronously. We want to fire an event dispatch that will indicate that the whole
+process is ready once every event finishes its' work.
+ 
+##### Use Case examples:
+- Fire a `get-user-home` request once two independent `POST` requests are finished.
+- It boosts your optimistic app-db updates! You can dispatch a `GET` in background and just assume it will be done by 
+the time you need it. So the reasons of waiting at the final step can be transparent for users.   
 
 #### Add dependency
 
@@ -142,6 +148,7 @@ Aramis equips you with couple of subscriptions you could use to track progress o
 
 - Dispatching one event in two `::one-of` wrappers **will** disptach the event two times.
 - It's assumed that status of one event as a collaborator is the same in every group it collaborates to.
+- Proper error handling is yet to be done. Possible scenario ideas will be valuable contribution. Thanks! 
 
 ## License
 
