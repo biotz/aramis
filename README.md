@@ -22,7 +22,7 @@ the time you need it. So the reasons of waiting at the final step can be transpa
 
 #### Add dependency
 
-`[aramis.core "0.1.1"]`
+[![Clojars Project](https://img.shields.io/clojars/v/aramis.svg)](https://clojars.org/aramis)
 
 #### Dispatching a group
 
