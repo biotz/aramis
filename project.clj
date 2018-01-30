@@ -18,15 +18,7 @@
                         :compiler
                         {:main runners.doo
                          :optimizations :none
-                         :output-to "resources/public/cljs/tests/all-tests.js"}
-                        ;{:preloads      [devtools.preload]
-                        ; :output-to     "run/compiled/browser/test.js"
-                        ; :source-map    true
-                        ; :output-dir    "run/compiled/browser/test"
-                        ; :optimizations :none
-                        ; :source-map-timestamp true
-                        ; :pretty-print  true}
-                        }
+                         :output-to "resources/public/cljs/tests/all-tests.js"}}
                        {:id "devcards-test"
                         :source-paths ["src" "test"]
                         :figwheel {:devcards true}
