@@ -1,0 +1,1 @@
+clojure lein: lein2 script: lein2 cljsbuild test
