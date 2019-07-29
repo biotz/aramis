@@ -152,7 +152,7 @@ Aramis equips you with couple of subscriptions you could use to track progress o
 
 ## License
 
-Copyright © 2018 Magnet Coop
+Copyright (c) 2018, 2019 Magnet S Coop.
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
