@@ -1,3 +1,10 @@
 language: clojure
+lein: 2.8.3
+dist: xenial
+jdk:
+  -openjdk8
 script:
 - lein cljsbuild test
+cache:
+  directories:
+    - $HOME/.m2
